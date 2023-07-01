@@ -34,7 +34,10 @@ Los usuarios pueden crear listas personalizadas, y agregar artículos a estas li
 
 Los usuarios pueden realizar búsquedas por artículos, usuarios, etiquetas o listas, y filtrar los resultados por categoría.
 
+### Diagrama ER
 
-## Licencia
+![Diagrama ER](echo_er.png)
+
+### Licencia
 
 El presente proyecto se encuentra bajo la licencia MIT. Para más información, ver el archivo [LICENSE](LICENSE).
