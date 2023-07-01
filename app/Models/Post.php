@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Jetstream\Jetstream;
 
 class Post extends Model
@@ -17,7 +18,7 @@ class Post extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'author_id', 'title', 'content', 'comments', 'likes', 'views', 'image_url'
+        'author_id', 'title', 'content', 'likes', 'views', 'image_url'
     ];
 
     /**
@@ -34,7 +35,7 @@ class Post extends Model
     protected $casts = [
         // 'email_verified_at' => 'datetime',
         // 'tags' => 'array',
-        'comments' => 'array',
+        // 'comments' => 'array',
     ];
 
     /**
@@ -58,5 +59,10 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 }
