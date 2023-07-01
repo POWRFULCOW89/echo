@@ -26,6 +26,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get("/mission", function () {
+    return Inertia::render("Mission");
+});
+
 Route::get('/feed', [PostController::class, 'index'])->name('posts.index');
 
 
