@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -21,6 +23,16 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+    ]);
+});
+
+Route::get('/feed', [PostController::class, 'index'])->name('posts.index');
+
+
+Route::get('/posts/{post}', function (Post $post) {
+    return Inertia::render('Post', [
+        'post' => $post,
+        'user' => $post->user,
     ]);
 });
 
