@@ -15,8 +15,12 @@ export default {
     theme: {
         extend: {
             fontFamily: {
+
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                kalam: ['Kalam'],
+                poppins: ['Poppins']
             },
+            colors:{blue:'#02B4E8', grayf:'#7B7B7B'}
         },
     },
 
