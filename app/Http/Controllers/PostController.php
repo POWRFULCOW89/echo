@@ -34,7 +34,16 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        Post::create([
+            'user_id' => $request->user()->id,
+            'title' => $request->title,
+            'content' => $request->content,
+            'likes' => 0,
+            'views' => 0,
+            'image_url' => 'https://picsum.photos/200/300'
+        ]);
+
+        return redirect()->route('my-posts');
     }
 
     /**
@@ -51,7 +60,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+
+        // $post = Post::find($post->id);
+        // return Inertia::render('EditPost', ['post' => $post]);
     }
 
     /**
@@ -59,7 +70,12 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $post->update([
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('my-posts');
     }
 
     /**

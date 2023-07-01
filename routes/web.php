@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use App\Models\Post;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -48,4 +49,44 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::get("/my-posts", function () {
+        $user = auth()->user();
+        return Inertia::render("MyPosts", [
+            "posts" => Post::where("user_id", $user->id)->get(),
+        ]);
+    })->name("my-posts");
+
+    Route::get("/editor/{id}", function ($id) {
+        $post = Post::find($id);
+
+        if ($post->user_id != auth()->user()->id) {
+            return Redirect::intended('/my-posts');
+        }
+
+        return Inertia::render("Editor", [
+            "post" => $post,
+        ]);
+    })->name('editor.edit');
+
+    Route::get("/editor", function () {
+        return Inertia::render("Editor", [
+            "post" => null,
+        ]);
+    })->name('editor');
+
+
+    Route::put("/editor/:id", function ($id) {
+        $post = Post::find($id);
+        $post->title = request()->title;
+        $post->content = request()->content;
+        $post->save();
+
+        return redirect()->route("my-posts");
+    })->name('editor');
+
+
+    Route::post('/posts', [PostController::class, 'store'])->name('save-post');
+
+    Route::put('/posts/{post}', [PostController::class, 'update'])->name('update-post');
 });
