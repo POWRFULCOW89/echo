@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_lists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('title');
+            $table->string('name');
             $table->string('description')->nullable();
             $table->string('image_url')->nullable();
             $table->timestamps();
