@@ -65,4 +65,9 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function lists()
+    {
+        return $this->belongsToMany(UserList::class)->withTimestamps();
+    }
 }
