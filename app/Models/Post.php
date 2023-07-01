@@ -17,7 +17,7 @@ class Post extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'author_id', 'title', 'content', 'tags', 'comments', 'likes', 'views', 'image_url'
+        'author_id', 'title', 'content', 'comments', 'likes', 'views', 'image_url'
     ];
 
     /**
@@ -33,7 +33,7 @@ class Post extends Model
      */
     protected $casts = [
         // 'email_verified_at' => 'datetime',
-        'tags' => 'array',
+        // 'tags' => 'array',
         'comments' => 'array',
     ];
 
@@ -53,5 +53,10 @@ class Post extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }

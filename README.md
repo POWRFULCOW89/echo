@@ -41,3 +41,16 @@ Los usuarios pueden realizar búsquedas por artículos, usuarios, etiquetas o li
 ### Licencia
 
 El presente proyecto se encuentra bajo la licencia MIT. Para más información, ver el archivo [LICENSE](LICENSE).
+
+
+TODO:
+
+Tag
+Prompt
+
+Post_Tag
+
+List
+List_Post
+
+Actualizar post para usar

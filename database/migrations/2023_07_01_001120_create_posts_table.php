@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string("title");
             $table->text("content");
-            $table->json("tags")->nullable();
+            // $table->json("tags")->nullable();
+
             $table->json("comments")->nullable();
             $table->integer("likes")->default(0);
             $table->integer("views")->default(0);
