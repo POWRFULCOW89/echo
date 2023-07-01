@@ -17,11 +17,9 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1,
+            'user_id' => $this->faker->numberBetween(1, 10),
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
-            'tags' => "[1, 2, 3]",
-            'comments' => "[1, 2, 3]",
             'likes' => $this->faker->numberBetween(0, 100),
             'views' => $this->faker->numberBetween(0, 100),
             'image_url' => $this->faker->imageUrl(),

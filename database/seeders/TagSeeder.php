@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\PostFactory;
+use Database\Factories\TagFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PostSeeder extends Seeder
+class TagSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        PostFactory::new()->count(10)->create();
+        TagFactory::new()->count(10)->create();
     }
 }

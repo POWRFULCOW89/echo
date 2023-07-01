@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\PostFactory;
+use Database\Factories\UserListFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PostSeeder extends Seeder
+class UserListSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        PostFactory::new()->count(10)->create();
+        UserListFactory::new()->count(10)->create();
     }
 }
