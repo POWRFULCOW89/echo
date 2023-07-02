@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Prompt;
 use Inertia\Inertia;
 
 class PostController extends Controller
@@ -15,8 +16,9 @@ class PostController extends Controller
     public function index()
     {
         // return Post::all();
-        $posts = Post::all();
-        return Inertia::render('Feed', ['posts' => $posts]);
+        $posts = Post::with("user")->get();
+        $prompt = Prompt::latest()->first()->content;
+        return Inertia::render('Feed', ['posts' => $posts, 'prompt' => $prompt]);
     }
 
     /**
