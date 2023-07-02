@@ -17,6 +17,7 @@ const form = useForm({
     _method: 'PUT',
     name: props.user.name,
     email: props.user.email,
+    bio: props.user.bio,
     photo: null,
 });
 
@@ -171,6 +172,18 @@ const clearPhotoFileInput = () => {
                         A new verification link has been sent to your email address.
                     </div>
                 </div>
+            </div>
+
+            <!-- Bio -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="bio" value="Bio" />
+                <TextInput
+                    id="bio"
+                    v-model="form.bio"
+                    type="text"
+                    class="mt-1 block w-full"
+                />
+                <InputError :message="form.errors.bio" class="mt-2" />
             </div>
         </template>
 
