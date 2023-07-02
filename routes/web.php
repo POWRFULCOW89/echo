@@ -24,6 +24,7 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
     ]);
 });
 
