@@ -78,32 +78,24 @@ const getTimeAgo = (createdAt) => {
         </div>
     </nav>
 
-    <main>
-        <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-20 lg:px-10 lg:text-left">
-            <div class="bg-fixed bg-no-repeat bg-left-top bg-cover bg-center"
-                style="background-image: url('/images/home.png')">
+    <main class="relative">
+        <img src="/images/home.png" alt="Background Image" class="w-full h-full object-cover">
+        <div class="absolute inset-0">
+            <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-20 lg:px-10 lg:text-left ">
+                <h1 class="text-6xl sm:text-6xl font-poppins text-white">Let your voice<a class="font-bold"> be heard</a></h1><br/>
+                <p class="py-4 text-4xl sm:text-4xl font-poppins text-white">Share your story with the <br/>world, anytime.</p><br/>
+                <a href="" class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 font-poppins text-2xl">Begin exploring</a><br/>
             </div>
-
-            <a class="text-3xl sm:text-4xl font-poppins">Let your voice</a><a
-                class="text-3xl sm:text-4xl font-bold font-poppins"> be heard</a><br />
-            <p class="py-4 text-2xl sm:text-2xl font-poppins">Share your story with the <br />world, anytime.</p><br />
-            <a href="" class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 font-poppins">Begin
-                exploring</a><br />
-
         </div>
+
 
         <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-5 lg:px-10 lg:text-left">
             <p class="py-4 text-2xl sm:text-2xl font-poppins ">What people are saying</p><br />
-
-            <!-- <li v-for="post in posts" :key="post.id">
-                <a :href="`/posts/${post.id}`">{{ post.title }}</a>
-            </li> -->
 
             <div class="grid justify-center space-y-4 ">
 
                 <a :href="`/posts/${post.id}`" v-for="post in posts" :key="post.id">
                     <div class="flex flex-wrap bg-left-top">
-
                         <!-- <p>{{ post?.tags?.[0].name }}</p> -->
                         <div class="max-w-xs px-4 rounded-lg">
 
@@ -134,6 +126,7 @@ const getTimeAgo = (createdAt) => {
     </main>
 
     <footer class="bg-gray py-6 relative">
+
         <div class="container mx-auto flex">
             <div class="flex flex-grow">
                 <a href="" class="text-white font-kalam text-2xl">((( Echo )))</a>
