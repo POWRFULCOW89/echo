@@ -2,6 +2,10 @@
 import { Head, Link } from '@inertiajs/vue3';
 import Nav from "@/Components/Nav.vue";
 import Footer from "@/Components/Footer.vue";
+import NavLink from "@/Components/NavLink.vue";
+import getTimeAgo from "utils/getTimeAgo";
+import getTimeToRead from "utils/getTimeToRead";
+
 
 defineProps({
     canLogin: Boolean,
@@ -11,63 +15,27 @@ defineProps({
     posts: Array
 });
 
-const getTimeToRead = (content) => {
-    const wordCount = content.split(' ').length;
-    const minutes = Math.ceil(wordCount / 200); // Assuming average reading speed of 200 words per minute
-    return minutes;
-};
-
-const getTimeAgo = (createdAt) => {
-    const currentTime = new Date();
-    const diffInMilliseconds = currentTime - new Date(createdAt);
-    const diffInSeconds = Math.floor(diffInMilliseconds / 1000);
-    let timeAgo;
-
-    if (diffInSeconds < 60) {
-        timeAgo = `${diffInSeconds} seconds ago`;
-    } else if (diffInSeconds < 3600) {
-        const diffInMinutes = Math.floor(diffInSeconds / 60);
-        timeAgo = `${diffInMinutes} minutes ago`;
-    } else if (diffInSeconds < 86400) {
-        const diffInHours = Math.floor(diffInSeconds / 3600);
-        timeAgo = `${diffInHours} hours ago`;
-    } else if (diffInSeconds < 604800) {
-        const diffInDays = Math.floor(diffInSeconds / 86400);
-        timeAgo = `${diffInDays} days ago`;
-    } else {
-        const diffInWeeks = Math.floor(diffInSeconds / 604800);
-        timeAgo = `${diffInWeeks} weeks ago`;
-    }
-
-    return timeAgo;
-};
-
 </script>
 
 <template>
     <Head title="Welcome" />
 
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    </head>
-
     <div>
         <Nav/>
     </div>
+
 
     <main class="relative">
         <img src="/images/home.png" alt="Background Image" class="w-full h-full object-cover">
         <div class="absolute inset-0">
             <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-20 lg:px-10 lg:text-left ">
-                <h1 class="text-6xl sm:text-6xl font-poppins text-white">Let your voice<a class="font-bold"> be heard</a></h1><br/>
-                <p class="py-4 text-4xl sm:text-4xl font-poppins text-white">Share your story with the <br/>world, anytime.</p><br/>
-                <a href="" class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 font-poppins text-2xl">Begin exploring</a><br/>
+                <h1 class="text-6xl sm:text-6xl font-poppins text-white">Let your voice<a class="font-bold"> be heard</a>
+                </h1><br />
+                <p class="py-4 text-4xl sm:text-4xl font-poppins text-white">Share your story with the <br />world, anytime.
+                </p><br />
+                <a href=""
+                    class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 font-poppins text-2xl">Begin
+                    exploring</a><br />
             </div>
         </div>
 
