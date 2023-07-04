@@ -9,23 +9,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     </head>
-    <nav class="bg-blue py-6 relative">
 
-        <div class="container mx-auto flex">
-            <div class="flex flex-grow font-kalam">
-                <a href="" class="text-white  text-2xl">((( Echo )))</a>
-            </div>
-
-            <div class="flex justify-end flex-grow">
-                <div>
-                    <a href="" class="text-white lg:mr-10 font-poppins">Our Mission</a>
-                    <a href="" class="text-white lg:mr-10 font-poppins">Membership</a>
-                    <a href="" class="text-white lg:mr-10 font-poppins">Create</a>
-                    <a href="" class="btn bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-400 font-poppins">Get started</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div>
+        <Nav/>
+    </div>
 
     <main class="font-poppins">
         <section class="relative">
@@ -110,33 +97,13 @@
                 <a href="" class="btn bg-gray-900 text-white px-4 py-2 rounded-full font-poppins hover:bg-blue mx-auto">Get started</a>
             </div>
         </div>
-
-
-
-
     </main>
 
-    <footer class="bg-grayf py-6 relative">
-        <div class="container mx-auto flex">
-            <div class="flex flex-grow">
-                <a href="" class="text-white font-kalam text-2xl">((( Echo )))</a>
-            </div>
-
-            <div class="flex justify-between flex-grow">
-                <div>
-                    <a class="text-white lg:mr-10 font-kalam text-2xl">Let your voice be heard!</a>
-                </div>
-
-                <div>
-                    <a href="" class="text-white lg:mr-10 font-poppins underline">Terms</a>
-                    <a href="" class="text-white lg:mr-10 font-poppins underline">Privacy</a>
-                    <a href="" class="text-white lg:mr-10 font-poppins underline">Help</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <Footer/>
 
 </template>
 <script setup>
 import {Head, Link} from "@inertiajs/vue3";
+import Nav from "@/Components/Nav.vue";
+import Footer from "@/Components/Footer.vue";
 </script>
