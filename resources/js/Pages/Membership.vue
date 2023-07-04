@@ -1,14 +1,8 @@
 <template>
-    <Head title="Membership"/>
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    </head>
+    <Head title="Membership" />
+    <nav class="bg-blue py-6 relative">
+
 
     <div>
         <Nav/>
@@ -48,6 +42,7 @@
                 <p class="text-center text-xl">Ad-free browsing</p>
                 <p class="text-center text-xl">Unlimited article creation</p>
                 <p class="text-center text-xl">Personalized newsletters</p>
+
             </div>
         </div>
 
@@ -97,6 +92,7 @@
                 <a href="" class="btn bg-gray-900 text-white px-4 py-2 rounded-full font-poppins hover:bg-blue mx-auto">Get started</a>
             </div>
         </div>
+
     </main>
 
     <Footer/>
@@ -106,4 +102,5 @@
 import {Head, Link} from "@inertiajs/vue3";
 import Nav from "@/Components/Nav.vue";
 import Footer from "@/Components/Footer.vue";
+
 </script>
