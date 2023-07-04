@@ -6,15 +6,15 @@ Un sitio web para publicar tus ideas al mundo, uniendo a lectores y creadores de
 
 1. Instalar dependencias:
 
-    ```npm install```
+    `npm install`
 
 2. Generar un build:
 
-    ```npm run build```
+    `npm run build`
 
 3. Ejecutar las migraciones:
 
-    ```php artisan migrate```
+    `php artisan migrate`
 
 ## Proyecto
 
@@ -41,3 +41,37 @@ Los usuarios pueden realizar búsquedas por artículos, usuarios, etiquetas o li
 ### Licencia
 
 El presente proyecto se encuentra bajo la licencia MIT. Para más información, ver el archivo [LICENSE](LICENSE).
+
+### Roadmap
+
+✅❌
+| Vista | Backend | Frontend | Notas |
+| ----- | ------------------ | ------------------ | ----- |
+| Home | ✅ | ❌ | |
+| Login | ✅ | ❌ | |
+| Registro | ✅ | ❌ | |
+| Olvidé mi contraseña | ✅ | ❌ | |
+| Feed | ✅ | ❌ | Combinar con dashboard |
+| Artículo | ✅ | ❌ | |
+| Crear post | ✅ | ❌ | Pendiente restricción de 3 artículos|
+| Editar post | ✅ | ❌ | Pendiente: añadir tags e imagen de fondo |
+| Administrar posts | ✅ | ❌ | Pendiente: eliminación |
+| Perfil público | ❌ | ❌ | Pendiente: sistema de seguidores |
+| Perfil privado | ✅ | ❌ | Pendiente: adquirir y administrar la suscripción |
+| Buscar | ❌ | ❌ | Buscar una integración con Algolia |
+| Misión | ✅ | ✅ | |
+| Suscripción | ✅ | ✅ | |
+
+### Líneas de mejora
+
+-   Newsletter
+-   Integración con Google Analytics y Ads
+
+### Calendario
+
+-   Lunes 3: Vistas de login, registro, contraseña olvidada
+-   Martes 4: Perfiles público y privado
+-   Miércoles 5: Búsqueda
+-   Jueves 6: Refinar UI de Home, artículo y crear/editar posts
+-   Viernes 7: Sistema de seguidores y membresía
+-   Sábado 8: Comodín, llenar datos reales, presentación
