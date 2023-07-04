@@ -1,8 +1,11 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import Nav from "@/Components/Nav.vue";
+import Footer from "@/Components/Footer.vue";
 import NavLink from "@/Components/NavLink.vue";
 import getTimeAgo from "utils/getTimeAgo";
 import getTimeToRead from "utils/getTimeToRead";
+
 
 defineProps({
     canLogin: Boolean,
@@ -17,24 +20,10 @@ defineProps({
 <template>
     <Head title="Welcome" />
 
-    <nav class="bg-blue py-6 relative">
+    <div>
+        <Nav/>
+    </div>
 
-        <div class="container mx-auto flex">
-            <div class="flex flex-grow font-kalam">
-                <a href="/" class="text-white  text-2xl">((( Echo )))</a>
-            </div>
-
-            <div class="flex justify-end flex-grow">
-                <div>
-                    <a href="" class="text-white lg:mr-10 font-poppins">Our Mission</a>
-                    <a href="" class="text-white lg:mr-10 font-poppins">Membership</a>
-                    <a href="" class="text-white lg:mr-10 font-poppins">Create</a>
-                    <a href="" class="btn bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-400 font-poppins">Get
-                        started</a>
-                </div>
-            </div>
-        </div>
-    </nav>
 
     <main class="relative">
         <img src="/images/home.png" alt="Background Image" class="w-full h-full object-cover">
@@ -87,26 +76,8 @@ defineProps({
         </div>
     </main>
 
-    <footer class="bg-gray py-6 relative">
+    <Footer/>
 
-        <div class="container mx-auto flex">
-            <div class="flex flex-grow">
-                <a href="" class="text-white font-kalam text-2xl">((( Echo )))</a>
-            </div>
-
-            <div class="flex justify-between flex-grow">
-                <div>
-                    <a class="text-white lg:mr-10 font-kalam text-2xl">Let your voice be heard!</a>
-                </div>
-
-                <div>
-                    <a href="" class="text-white lg:mr-10 font-poppins underline">Terms</a>
-                    <a href="" class="text-white lg:mr-10 font-poppins underline">Privacy</a>
-                    <a href="" class="text-white lg:mr-10 font-poppins underline">Help</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </template>
 
 <style>

@@ -1,4 +1,19 @@
+<script>
+    import {defineComponent} from "vue";
+    import Nav from "@/Components/Nav.vue";
+    import Footer from "@/Components/Footer.vue";
+
+    export default defineComponent({
+        components: {Footer, Nav}
+    })
+
+</script>
+
 <template>
+    <div>
+        <Nav/>
+    </div>
+
     <main class="relative">
         <div class="absolute inset-0">
             <div class="bg-black opacity-50 absolute inset-0"></div>
@@ -42,4 +57,8 @@
         </div>
         <img src="/images/coworking.jpg" alt="Background Image" class="w-full h-full object-cover">
     </main>
+
+    <div>
+        <Footer/>
+    </div>
 </template>
