@@ -48,9 +48,9 @@ El presente proyecto se encuentra bajo la licencia MIT. Para más información, 
 | Vista | Backend | Frontend | Notas |
 | ----- | ------------------ | ------------------ | ----- |
 | Home | ✅ | ❌ | |
-| Login | ✅ | ❌ | |
-| Registro | ✅ | ❌ | |
-| Olvidé mi contraseña | ✅ | ❌ | |
+| Login | ✅ | ✅ | |
+| Registro | ✅ | ✅ | |
+| Olvidé mi contraseña | ✅ | ✅ | |
 | Feed | ✅ | ❌ | Combinar con dashboard |
 | Artículo | ✅ | ❌ | |
 | Crear post | ✅ | ❌ | Pendiente restricción de 3 artículos|
