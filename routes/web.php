@@ -38,16 +38,6 @@ Route::get("/membership", function () {
 
 Route::get('/feed', [PostController::class, 'index'])->name('posts.index');
 
-Route::get('/article', function () {
-    return Inertia::render('Article', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-        'posts' => Post::with('users')->with("tags")->latest()->take(10)->get(),
-    ]);
-});
-
 Route::get('/posts/{post}', function (Post $post) {
     return Inertia::render('Post', [
         'post' => $post,
