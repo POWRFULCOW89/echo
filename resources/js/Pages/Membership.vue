@@ -1,14 +1,5 @@
 <template>
-    <Head title="Membership"/>
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    </head>
+    <Head title="Membership" />
     <nav class="bg-blue py-6 relative">
 
         <div class="container mx-auto flex">
@@ -22,7 +13,8 @@
                     <a href="" class="text-white lg:mr-10 font-poppins">Our Mission</a>
                     <a href="" class="text-white lg:mr-10 font-poppins">Membership</a>
                     <a href="" class="text-white lg:mr-10 font-poppins">Create</a>
-                    <a href="" class="btn bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-400 font-poppins">Get started</a>
+                    <a href="" class="btn bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-400 font-poppins">Get
+                        started</a>
                 </div>
             </div>
         </div>
@@ -33,12 +25,15 @@
             <div class="bg-black opacity-50 absolute inset-0"></div>
             <div class="absolute inset-0 flex justify-evenly items-center gap-8">
                 <section class="flex-1 z-10 p-16">
-                    <h1 class="text-white text-6xl">Amplify your <br />voice, <a class="font-bold">inspire the <br />world!</a>
+                    <h1 class="text-white text-6xl">Amplify your <br />voice, <a class="font-bold">inspire the
+                            <br />world!</a>
                     </h1>
                     <p class="text-white text-2xl py-8">Subscribe to Echo and unlock a world
                         of captivating <br />content that will broaden your horizons.
                     </p>
-                    <a href="" class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 font-poppins text-2xl">Join Echo</a><br/>
+                    <a href=""
+                        class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 font-poppins text-2xl">Join
+                        Echo</a><br />
                 </section>
 
             </div>
@@ -71,7 +66,8 @@
             <img src="ruta-de-la-imagen" alt="Imagen" class="rounded-full w-24 h-24">
         </div>
         <div class="w-1/3">
-            <p class="text-right">I love how Echo empowers me to explore new ideas and connect with a vibrant community of like-minded individuals.</p>
+            <p class="text-right">I love how Echo empowers me to explore new ideas and connect with a vibrant community of
+                like-minded individuals.</p>
             <p class="text-right mt-2">- Albert Einstein</p>
         </div>
     </div>
@@ -88,7 +84,8 @@
                 <div class="flex justify-end flex-grow ml-5 mt-7 text-xl">
                     <p class="lg:mr-10">“I love how Echo empowers me to explore new ideas and connect
                         with a vibrant community of like-minded individuals.”
-                        <p class="font-bold">- Albert Einstein</p> </p>
+                    <p class="font-bold">- Albert Einstein</p>
+                    </p>
                 </div>
             </div>
         </div>
@@ -123,8 +120,7 @@
             </div>
         </div>
     </footer>
-
 </template>
 <script setup>
-import {Head, Link} from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 </script>
