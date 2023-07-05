@@ -14,7 +14,7 @@
         <Nav/>
     </div>
 
-    <main class="relative">
+    <main class="relative font-poppins">
         <div class="absolute inset-0">
             <div class="bg-black opacity-50 absolute inset-0"></div>
             <div class="absolute inset-0 flex justify-evenly items-center gap-8">
