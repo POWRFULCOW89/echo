@@ -20,3 +20,9 @@
 
 <script setup>
 </script>
+
+<style>
+input::placeholder {
+    color: white;
+}
+</style>

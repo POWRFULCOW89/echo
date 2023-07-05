@@ -98,8 +98,3 @@ defineProps({
     <FooterAutenticado/>
 </template>
 
-<style>
-input::placeholder {
-    color: white;
-}
-</style>
