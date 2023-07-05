@@ -53,7 +53,7 @@ defineProps({
                             <img :src="post.image_url" class="shadow rounded max-w-full h-auto align-middle border-none" />
                         </div>
 
-                        <div class="flex flex-col justify-evenly p-4 text-2xl  font-poppins ">
+                        <div class="flex flex-col justify-evenly p-4 text-2xl  font-poppins">
                             <p class="mt-4">{{ post.title }}</p>
                             <div class="flex items-center flex-wrap bg-left-top">
                                 <div class="flex flex-1 justify-between items-center text-xl">

@@ -38,11 +38,11 @@ Route::get("/membership", function () {
 
 Route::get('/feed', [PostController::class, 'index'])->name('posts.index');
 
-
 Route::get('/posts/{post}', function (Post $post) {
     return Inertia::render('Post', [
         'post' => $post,
         'user' => $post->user,
+        'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
     ]);
 });
 
