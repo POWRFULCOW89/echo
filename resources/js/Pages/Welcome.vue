@@ -3,8 +3,8 @@ import { Head, Link } from '@inertiajs/vue3';
 import Nav from "@/Components/Nav.vue";
 import Footer from "@/Components/Footer.vue";
 import NavLink from "@/Components/NavLink.vue";
-import getTimeAgo from "utils/getTimeAgo";
-import getTimeToRead from "utils/getTimeToRead";
+import getTimeAgo from "../Utils/getTimeAgo";
+import getTimeToRead from "../Utils/getTimeToRead";
 
 
 defineProps({
@@ -21,7 +21,7 @@ defineProps({
     <Head title="Welcome" />
 
     <div>
-        <Nav/>
+        <Nav />
     </div>
 
 
@@ -76,8 +76,7 @@ defineProps({
         </div>
     </main>
 
-    <Footer/>
-
+    <Footer />
 </template>
 
 <style>
