@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +37,6 @@ Route::get("/membership", function () {
     return Inertia::render("Membership");
 });
 
-Route::get('/feed', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('/posts/{post}', function (Post $post) {
     return Inertia::render('Post', [
@@ -46,6 +46,13 @@ Route::get('/posts/{post}', function (Post $post) {
     ]);
 });
 
+Route::get('/profile/{user}', function (User $user) {
+    return Inertia::render('PublicProfile', [
+        'user' => $user,
+        'posts' => Post::with('user')->with("tags")->where("user_id", $user->id)->take(10)->get(),
+    ]);
+})->name('profile');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -54,6 +61,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+
+    Route::get('/feed', [PostController::class, 'index'])->name('posts.index');
 
     Route::get("/my-posts", function () {
         $user = auth()->user();
