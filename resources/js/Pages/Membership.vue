@@ -1,7 +1,17 @@
+<script setup>
+import { Head } from "@inertiajs/vue3";
+import MainLayout from "@/Layouts/MainLayout.vue";
+
+defineProps({
+    user: Object,
+});
+
+</script>
+
 <template>
     <Head title="Membership" />
 
-    <MainLayout>
+    <MainLayout :user="user">
         <section class="relative">
             <div class="absolute inset-0">
                 <div class="bg-black opacity-50 absolute inset-0"></div>
@@ -81,7 +91,7 @@
                 </ul>
             </div>
             <img src="/images/chainsblack.png" alt="Chains Image" class="absolute inset-y-48 left-28 w-40 h-40">
-            <div class="flex flex-col items-center my-40">
+            <div class="flex flex-col items-center py-40">
                 <p class="text-center text-6xl">Where words Echo,<br /><br />minds<a class="font-kalam"> unite</a>!</p>
                 <div class="ml-52 -mt-4">
                     <img src="/images/dash.png" alt="Dash Image" class="w-44 mb-20">
@@ -93,8 +103,3 @@
         </div>
     </MainLayout>
 </template>
-<script setup>
-import { Head } from "@inertiajs/vue3";
-import MainLayout from "@/Layouts/MainLayout.vue";
-
-</script>

@@ -18,7 +18,7 @@ class PostController extends Controller
         // return Post::all();
         $posts = Post::with("user")->get();
         $prompt = Prompt::latest()->first()->content;
-        return Inertia::render('Feed', ['posts' => $posts, 'prompt' => $prompt]);
+        return Inertia::render('Feed', ['posts' => $posts, 'prompt' => $prompt, 'user' => auth()->user()]);
     }
 
     /**

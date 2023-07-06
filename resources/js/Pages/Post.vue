@@ -7,7 +7,8 @@ import MainLayout from '@/Layouts/MainLayout.vue';
 defineProps({
     post: Object,
     user: Object,
-    posts: Array
+    posts: Array,
+    currentUser: Object
 });
 
 </script>
@@ -16,7 +17,7 @@ defineProps({
 <template>
     <Head title="Post" />
 
-    <MainLayout>
+    <MainLayout :user="currentUser">
         <section class="relative">
             <div class="absolute inset-0">
                 <div class="bg-black opacity-50 absolute inset-0"></div>

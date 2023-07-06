@@ -26,15 +26,20 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
         'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+        'user' => auth()->user(),
     ]);
 });
 
 Route::get("/mission", function () {
-    return Inertia::render("Mission");
+    return Inertia::render("Mission", [
+        "user" => auth()->user(),
+    ]);
 });
 
 Route::get("/membership", function () {
-    return Inertia::render("Membership");
+    return Inertia::render("Membership", [
+        "user" => auth()->user(),
+    ]);
 });
 
 
@@ -43,6 +48,8 @@ Route::get('/posts/{post}', function (Post $post) {
         'post' => $post,
         'user' => $post->user,
         'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+        "currentUser" => auth()->user(),
+
     ]);
 });
 
@@ -50,6 +57,7 @@ Route::get('/profile/{user}', function (User $user) {
     return Inertia::render('PublicProfile', [
         'user' => $user,
         'posts' => Post::with('user')->with("tags")->where("user_id", $user->id)->take(10)->get(),
+        "currentUser" => auth()->user(),
     ]);
 })->name('profile');
 
@@ -58,10 +66,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-
+    // Route::get('/dashboard', function () {
+    //     return Inertia::render('Dashboard', [
+    //         'user' => auth()->user(),
+    //     ]);
+    // })->name('dashboard');
 
     Route::get('/feed', [PostController::class, 'index'])->name('posts.index');
 
@@ -69,6 +78,7 @@ Route::middleware([
         $user = auth()->user();
         return Inertia::render("MyPosts", [
             "posts" => Post::where("user_id", $user->id)->get(),
+            "user" => $user,
         ]);
     })->name("my-posts");
 
@@ -81,12 +91,14 @@ Route::middleware([
 
         return Inertia::render("Editor", [
             "post" => $post,
+            'user' => auth()->user(),
         ]);
     })->name('editor.edit');
 
     Route::get("/editor", function () {
         return Inertia::render("Editor", [
             "post" => null,
+            'user' => auth()->user(),
         ]);
     })->name('editor');
 

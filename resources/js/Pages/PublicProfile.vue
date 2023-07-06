@@ -1,16 +1,20 @@
 <script setup>
+import { Head } from '@inertiajs/vue3';
 import Post from '@/Components/Post.vue';
 import MainLayout from '@/Layouts/MainLayout.vue';
 
 defineProps({
     user: Object,
     posts: Array,
+    currentUser: Object,
 });
 
 </script>
 
 <template>
-    <MainLayout class="font-poppins dark:bg-gray-800">
+    <Head :title="user.name + '\'s profile'" />
+
+    <MainLayout :user="currentUser" class="font-poppins dark:bg-gray-800">
         <div class="w-1/2 mx-auto ">
             <section class="flex gap-8 mt-16 justify-center items-center">
                 <img class="w-64 rounded-full" :src="user.profile_photo_url" alt="avatar" />

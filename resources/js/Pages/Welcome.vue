@@ -10,7 +10,8 @@ defineProps({
     canRegister: Boolean,
     laravelVersion: String,
     phpVersion: String,
-    posts: Array
+    posts: Array,
+    user: Object
 });
 
 </script>
@@ -18,7 +19,7 @@ defineProps({
 <template>
     <Head title="Welcome" />
 
-    <MainLayout>
+    <MainLayout :user="user">
         <div class="relative ">
             <img src="/images/home.png" alt="Background Image" class="w-full h-full object-cover">
             <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-20 lg:px-10 lg:text-left absolute left-0 top-0">
