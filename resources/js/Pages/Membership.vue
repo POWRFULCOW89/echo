@@ -1,25 +1,20 @@
 <template>
-
     <Head title="Membership" />
-    <nav class="bg-blue py-6 relative">
 
-
-    <div>
-        <Nav/>
-    </div>
-
-    <main class="font-poppins">
+    <MainLayout>
         <section class="relative">
             <div class="absolute inset-0">
                 <div class="bg-black opacity-50 absolute inset-0"></div>
                 <div class="absolute inset-0 flex justify-evenly items-center gap-8">
                     <section class="flex-1 z-10 p-16">
-                        <h1 class="text-white text-6xl">Amplify your <br />voice, <a class="font-bold">inspire the <br />world!</a>
+                        <h1 class="text-white text-6xl">Amplify your <br />voice, <a class="font-bold">inspire the
+                                <br />world!</a>
                         </h1>
                         <p class="text-white text-2xl py-8">Subscribe to Echo and unlock a world
                             of captivating <br />content that will broaden your horizons.
                         </p>
-                        <a href="" class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 text-xl">Join Echo</a><br/>
+                        <a href="" class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 text-xl">Join
+                            Echo</a><br />
                     </section>
 
                 </div>
@@ -56,11 +51,13 @@
                         <div class="basis-2/3">
                             <div class="flex-1 flex flex-col">
                                 <div class="flex gap-3">
-                                    <img src="/images/userMembership.jpg" alt="User Image" class="shadow rounded-full w-20 h-20 align-middle border-none mt-7" />
+                                    <img src="/images/userMembership.jpg" alt="User Image"
+                                        class="shadow rounded-full w-20 h-20 align-middle border-none mt-7" />
                                     <div class="ml-5 mt-7 text-xl">
                                         <p class="lg:mr-10">“I love how Echo empowers me to explore new ideas and connect
                                             with a vibrant community of like-minded individuals.”
-                                        <a class="font-bold">- Albert Einstein</a> </p>
+                                            <a class="font-bold">- Albert Einstein</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -85,22 +82,19 @@
             </div>
             <img src="/images/chainsblack.png" alt="Chains Image" class="absolute inset-y-48 left-28 w-40 h-40">
             <div class="flex flex-col items-center my-40">
-                <p class="text-center text-6xl">Where words Echo,<br/><br/>minds<a class="font-kalam"> unite</a>!</p>
+                <p class="text-center text-6xl">Where words Echo,<br /><br />minds<a class="font-kalam"> unite</a>!</p>
                 <div class="ml-52 -mt-4">
                     <img src="/images/dash.png" alt="Dash Image" class="w-44 mb-20">
                 </div>
-                <a href="" class="btn bg-gray-900 text-white px-4 py-2 rounded-full font-poppins hover:bg-blue mx-auto">Get started</a>
+                <a href="/feed"
+                    class="btn bg-gray-900 text-white px-4 py-2 rounded-full font-poppins hover:bg-blue mx-auto">Get
+                    started</a>
             </div>
         </div>
-
-    </main>
-
-    <Footer/>
-
+    </MainLayout>
 </template>
 <script setup>
-import {Head, Link} from "@inertiajs/vue3";
-import Nav from "@/Components/Nav.vue";
-import Footer from "@/Components/Footer.vue";
+import { Head } from "@inertiajs/vue3";
+import MainLayout from "@/Layouts/MainLayout.vue";
 
 </script>
