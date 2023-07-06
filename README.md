@@ -47,16 +47,16 @@ El presente proyecto se encuentra bajo la licencia MIT. Para más información, 
 ✅❌
 | Vista | Backend | Frontend | Notas |
 | ----- | ------------------ | ------------------ | ----- |
-| Home | ✅ | ❌ | |
+| Home | ✅ | ✅ | |
 | Login | ✅ | ✅ | |
 | Registro | ✅ | ✅ | |
 | Olvidé mi contraseña | ✅ | ✅ | |
-| Feed | ✅ | ❌ | Combinar con dashboard |
+| Feed | ✅ | ✅ | Combinar con dashboard |
 | Artículo | ✅ | ❌ | |
-| Crear post | ✅ | ❌ | Pendiente restricción de 3 artículos|
-| Editar post | ✅ | ❌ | Pendiente: añadir tags e imagen de fondo |
-| Administrar posts | ✅ | ❌ | Pendiente: eliminación |
-| Perfil público | ❌ | ❌ | Pendiente: sistema de seguidores |
+| Crear post | ❌ | ✅ | Pendiente restricción de 3 artículos|
+| Editar post | ✅ | ✅ | Pendiente: añadir tags e imagen de fondo |
+| Administrar posts | ❌ | ❌ | Pendiente: eliminación |
+| Perfil público | ✅ | ✅ | Pendiente: sistema de seguidores |
 | Perfil privado | ✅ | ❌ | Pendiente: adquirir y administrar la suscripción |
 | Buscar | ❌ | ❌ | Buscar una integración con Algolia |
 | Misión | ✅ | ✅ | |
