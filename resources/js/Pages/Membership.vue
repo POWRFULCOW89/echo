@@ -1,9 +1,6 @@
 <template>
 
     <Head title="Membership" />
-    <nav class="bg-blue py-6 relative">
-
-
     <div>
         <Nav/>
     </div>

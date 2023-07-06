@@ -9,11 +9,11 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-import { faHeart, faStar, faComment, faArrowRight, faTrash, faFilePen } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faStar, faComment, faArrowRight, faTrash, faFilePen, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
-library.add(faHeart, faStar, faComment, faArrowRight, faTrash, faFilePen);
+library.add(faHeart, faStar, faComment, faArrowRight, faTrash, faFilePen, faMagnifyingGlass);
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

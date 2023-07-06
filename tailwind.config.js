@@ -20,7 +20,7 @@ export default {
                 kalam: ['Kalam'],
                 poppins: ['Poppins']
             },
-            colors:{blue:'#02B4E8', grayf:'#7B7B7B'}
+            colors:{blue:'#02B4E8', grayf:'#7B7B7B', lightblue:'#27C0ED'}
         },
     },
 

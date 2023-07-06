@@ -1,6 +1,9 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import getTimeAgo from '../Utils/getTimeAgo';
+import Footer from "@/Components/Footer.vue";
+import NavAutenticado from "@/Components/NavAutenticado.vue";
+import FooterAutenticado from "@/Components/FooterAutenticado.vue";
 
 defineProps({
     posts: Array,
@@ -10,10 +13,32 @@ defineProps({
 
 <template>
     <Head title="Feed" />
-    <main class="flex">
-        <aside class="flex-1 border ">
-            &nbsp;
+
+    <NavAutenticado/>
+
+    <main class="flex font-poppins">
+        <aside class="flex-1 border">
+            <div class="border-none rounded-lg bg-sky-100 p-4 m-4 mt-12">
+                <div class="flex gap-3">
+                    <img src="/images/userMembership.jpg" alt="User Image" class="shadow rounded-full w-8 h-8 border-none" />
+                    <div class="py-2">
+                        <a href="/">Nombre<br/><br/></a>
+                        <a href="/">Saved<br/><br/></a>
+                        <a href="/">My lists</a>
+                    </div>
+
+                </div>
+                <hr class="my-4 border-gray-900">
+                <div class="flex gap-3">
+                    <img src="/images/userMembership.jpg" alt="User Image" class="shadow rounded-full w-8 h-8 border-none" />
+                    <div class="py-2">
+                        <a href="/">Followers<br/><br/></a>
+                    </div>
+                </div>
+            </div>
+            <img src="/images/bannerAdSushi.png" alt="Ad Image" class="pt-96 p-4" />
         </aside>
+
         <section class="flex flex-col flex-[4] place-items-center">
             <!-- <p class="border">{{ prompt }}</p> -->
             <div class="flex flex-col w-3/4 m-auto">
@@ -64,8 +89,12 @@ defineProps({
             </ul>
         </section>
         <aside class="flex-1 border">
-
+            <img src="/images/bannerAdFurniture.png" alt="Ad Image" class="pt-40 p-4"/>
+            <img src="/images/bannerAdDomino.jpg" alt="Ad Image" class="pt-96 p-4"/>
         </aside>
 
     </main>
+
+    <FooterAutenticado/>
 </template>
+
