@@ -24,7 +24,8 @@ defineProps({
                     <div class="py-2">
                         <a href="/">Nombre<br/><br/></a>
                         <a href="/">Saved<br/><br/></a>
-                        <a href="/">My lists</a>
+                        <a href="/">My lists<br/><br/></a>
+                        <a href="/my-posts">Blog posts</a>
                     </div>
 
                 </div>
@@ -49,7 +50,7 @@ defineProps({
                     {{ prompt }}
                 </div>
                 <Link href="/editor" class="bg-blue px-8 py-2 font-bold text-center flex gap-3 w-max place-items-center rounded-lg self-end
-                translate-x-1/2 -translate-y-1/2">
+                translate-x-1/2 -translate-y-1/2 hover:bg-sky-600">
                 <p class="text-white">Write</p>
                 <font-awesome-icon class="text-white" :icon="['fas', 'arrow-right']" />
                 </Link>
