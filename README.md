@@ -55,7 +55,7 @@ El presente proyecto se encuentra bajo la licencia MIT. Para más información, 
 | Artículo | ✅ | ❌ | |
 | Crear post | ❌ | ✅ | Pendiente restricción de 3 artículos|
 | Editar post | ✅ | ✅ | Pendiente: añadir tags e imagen de fondo |
-| Administrar posts | ❌ | ❌ | Pendiente: eliminación |
+| Administrar posts | ✅ | ✅ |  |
 | Perfil público | ✅ | ✅ | Pendiente: sistema de seguidores |
 | Perfil privado | ✅ | ❌ | Pendiente: adquirir y administrar la suscripción |
 | Buscar | ❌ | ❌ | Buscar una integración con Algolia |
@@ -69,9 +69,9 @@ El presente proyecto se encuentra bajo la licencia MIT. Para más información, 
 
 ### Calendario
 
--   Lunes 3: Vistas de login, registro, contraseña olvidada
--   Martes 4: Perfiles público y privado
--   Miércoles 5: Búsqueda
+-   [x] Lunes 3: Vistas de login, registro, contraseña olvidada
+-   [x] Martes 4: Perfiles público y privado
+-   [x] Miércoles 5: Búsqueda
 -   Jueves 6: Refinar UI de Home, artículo y crear/editar posts
 -   Viernes 7: Sistema de seguidores y membresía
 -   Sábado 8: Comodín, llenar datos reales, presentación
