@@ -17,6 +17,16 @@ const form = useForm({
 
 const submit = () => {
 
+    if (form.title.length < 3) {
+        alert('Title must be at least 3 characters long')
+        return
+    }
+
+    if (form.content.length < 3) {
+        alert('Content must be at least 3 characters long')
+        return
+    }
+
     if (props.post) {
         form.put(`/posts/${props.post.id}`)
     } else {

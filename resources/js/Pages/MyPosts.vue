@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, router, } from '@inertiajs/vue3';
 import getTimeAgo from '../Utils/getTimeAgo';
 import MainLayout from '@/Layouts/MainLayout.vue';
 
@@ -8,7 +8,12 @@ defineProps({
     user: Object
 });
 
-// TODO: Eliminar post
+const deletePost = (id) => {
+    if (confirm('Are you sure you want to delete this post?')) {
+        router.delete(`/posts/${id}`)
+    }
+}
+
 </script>
 
 
@@ -17,7 +22,7 @@ defineProps({
 
     <MainLayout :user="user">
 
-        <div class="p-12">
+        <div class="p-12 min-h-screen">
             <div class="flex justify-between items-center">
                 <p class="text-2xl">My posts</p>
                 <Link class="bg-blue px-4 py-2 rounded text-white " href="/editor">
@@ -33,13 +38,13 @@ defineProps({
                         <div class="border-gray-500 border p-5 rounded-xl flex flex-col gap-3">
                             <div class="flex justify-between items-start gap-3">
                                 <p class="text-lg w-3/4">{{ post.title }}</p>
-                                <Link :href="`/posts/${post.id}`">
+                                <Link :href="`/posts/${post.id}`" class="hover:text-blue">
                                 <font-awesome-icon class="text-2xl" :icon="['fas', 'arrow-right']" />
                                 </Link>
                             </div>
                             <div class="flex justify-between items-center">
                                 <p class="text-base text-gray-500">Last updated {{ getTimeAgo(post.updated_at) }}</p>
-                                <Link :href="`/editor/${post.id}`">
+                                <Link :href="`/editor/${post.id}`" class="hover:text-green-500">
                                 <font-awesome-icon class="text-2xl" :icon="['fas', 'file-pen']" />
                                 </Link>
                             </div>
@@ -56,7 +61,8 @@ defineProps({
                                     </div>
                                 </div>
 
-                                <font-awesome-icon class="dark:text-white text-2xl hover:text-red-500"
+                                <font-awesome-icon @click="deletePost(post.id)"
+                                    class="dark:text-white text-2xl hover:text-red-500 hover:cursor-pointer"
                                     :icon="['fas', 'trash']" />
                             </div>
                         </div>

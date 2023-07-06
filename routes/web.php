@@ -116,4 +116,6 @@ Route::middleware([
     Route::post('/posts', [PostController::class, 'store'])->name('save-post');
 
     Route::put('/posts/{post}', [PostController::class, 'update'])->name('update-post');
+
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('delete-post');
 });
