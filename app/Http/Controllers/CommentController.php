@@ -29,7 +29,14 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        //
+        Comment::create([
+            'user_id' => $request->user()->id,
+            'post_id' => $request->post_id,
+            'content' => $request->content,
+            'likes' => 0
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -46,6 +53,19 @@ class CommentController extends Controller
     public function edit(Comment $comment)
     {
         //
+    }
+
+    public function like(int $commentId)
+    {
+
+        // TODO: Se requiere un modelo separado para controlar los likes de los comentarios
+        //     $comment = Comment::find($commentId);
+
+        //     $comment->update([
+        //         'likes' => $comment->likes + 1
+        //     ]);
+
+        //     return redirect()->back(200);
     }
 
     /**

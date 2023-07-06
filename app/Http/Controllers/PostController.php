@@ -95,4 +95,13 @@ class PostController extends Controller
         Post::destroy($post->id);
         return redirect()->route('my-posts')->with('message', 'Post deleted successfully');;
     }
+
+    // public function like(Post $post)
+    // {
+    //     $post->update([
+    //         'likes' => $post->likes + 1
+    //     ]);
+
+    //     return redirect()->back();
+    // }
 }

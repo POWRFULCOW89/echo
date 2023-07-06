@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
 use App\Models\User;
@@ -49,9 +50,9 @@ Route::get('/posts/{post}', function (Post $post) {
         'user' => $post->user,
         'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
         "currentUser" => auth()->user(),
-
+        'comments' => $post->comments()->with('user')->get(),
     ]);
-});
+})->name('posts.show');
 
 Route::get('/profile/{user}', function (User $user) {
     return Inertia::render('PublicProfile', [
@@ -66,11 +67,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    // Route::get('/dashboard', function () {
-    //     return Inertia::render('Dashboard', [
-    //         'user' => auth()->user(),
-    //     ]);
-    // })->name('dashboard');
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard', [
+            'user' => auth()->user(),
+        ]);
+    })->name('dashboard');
 
     Route::get('/feed', [PostController::class, 'index'])->name('posts.index');
 
@@ -118,4 +119,6 @@ Route::middleware([
     Route::put('/posts/{post}', [PostController::class, 'update'])->name('update-post');
 
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('delete-post');
+
+    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('store-comment');
 });
