@@ -44,21 +44,20 @@ El presente proyecto se encuentra bajo la licencia MIT. Para más información, 
 
 ### Roadmap
 
-✅❌
 | Vista | Backend | Frontend | Notas |
 | ----- | ------------------ | ------------------ | ----- |
 | Home | ✅ | ✅ | |
 | Login | ✅ | ✅ | |
 | Registro | ✅ | ✅ | |
 | Olvidé mi contraseña | ✅ | ✅ | |
-| Feed | ✅ | ✅ | Combinar con dashboard |
+| Feed | ✅ | ✅ | |
 | Artículo | ✅ | ✅ | |
 | Crear post | ✅ | ✅ | |
 | Editar post | ✅ | ✅ | Pendiente: añadir tags e imagen de fondo |
 | Administrar posts | ✅ | ✅ | |
 | Perfil público | ✅ | ✅ | Pendiente: sistema de seguidores |
-| Perfil privado | ✅ | ❌ | Pendiente: adquirir y administrar la suscripción |
-| Buscar | ✅ | ❌ | Buscar una integración con Algolia |
+| Perfil privado | ✅ | ✅ |  |
+| Buscar | ✅ | ✅ |  |
 | Misión | ✅ | ✅ | |
 | Suscripción | ✅ | ✅ | |
 
