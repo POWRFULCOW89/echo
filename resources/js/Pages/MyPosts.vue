@@ -2,10 +2,12 @@
 import { Head, Link, router, } from '@inertiajs/vue3';
 import getTimeAgo from '../Utils/getTimeAgo';
 import MainLayout from '@/Layouts/MainLayout.vue';
+import Flash from '@/Components/Flash.vue';
 
-defineProps({
+const props = defineProps({
     posts: Object,
-    user: Object
+    user: Object,
+    canCreatePosts: Boolean,
 });
 
 const deletePost = (id) => {
@@ -21,8 +23,15 @@ const deletePost = (id) => {
     <Head title="My posts" />
 
     <MainLayout :user="user">
+        <!-- <pre>{{ props }}</pre> -->
+
+
 
         <div class="p-12 min-h-screen">
+
+            <Flash v-if="canCreatePosts !== undefined && !canCreatePosts"
+                :message="`You have exceed the limit of 3 posts per month. To keep creating, please subscribe to Echo+.`" />
+
             <div class="flex justify-between items-center">
                 <p class="text-2xl">My posts</p>
                 <Link class="bg-blue px-4 py-2 rounded text-white " href="/editor">

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
 /*
@@ -77,9 +78,11 @@ Route::middleware([
 
     Route::get("/my-posts", function () {
         $user = auth()->user();
+
         return Inertia::render("MyPosts", [
             "posts" => Post::where("user_id", $user->id)->get(),
             "user" => $user,
+            // "canCreatePosts" => true
         ]);
     })->name("my-posts");
 
@@ -97,6 +100,18 @@ Route::middleware([
     })->name('editor.edit');
 
     Route::get("/editor", function () {
+        $user = auth()->user();
+
+        // check how many posts has a user made in the last month
+        $posts = Post::where("user_id", $user->id)->where("created_at", ">", now()->subMonth())->get();
+
+        $canCreatePosts = $user->member || $posts->count() < 3;
+
+        if (!$canCreatePosts) {
+            // Session::flash("error", "You have reached the limit of posts you can create in a month. Please consider becoming a member to create more posts.");
+            return Redirect::intended('/my-posts')->with("canCreatePosts", false);
+        }
+
         return Inertia::render("Editor", [
             "post" => null,
             'user' => auth()->user(),
