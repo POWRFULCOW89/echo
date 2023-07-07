@@ -52,13 +52,13 @@ El presente proyecto se encuentra bajo la licencia MIT. Para más información, 
 | Registro | ✅ | ✅ | |
 | Olvidé mi contraseña | ✅ | ✅ | |
 | Feed | ✅ | ✅ | Combinar con dashboard |
-| Artículo | ✅ | ❌ | |
-| Crear post | ❌ | ✅ | Pendiente restricción de 3 artículos|
+| Artículo | ✅ | ✅ | |
+| Crear post | ✅ | ✅ | |
 | Editar post | ✅ | ✅ | Pendiente: añadir tags e imagen de fondo |
-| Administrar posts | ✅ | ✅ |  |
+| Administrar posts | ✅ | ✅ | |
 | Perfil público | ✅ | ✅ | Pendiente: sistema de seguidores |
 | Perfil privado | ✅ | ❌ | Pendiente: adquirir y administrar la suscripción |
-| Buscar | ❌ | ❌ | Buscar una integración con Algolia |
+| Buscar | ✅ | ❌ | Buscar una integración con Algolia |
 | Misión | ✅ | ✅ | |
 | Suscripción | ✅ | ✅ | |
 

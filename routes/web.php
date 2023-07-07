@@ -135,15 +135,23 @@ Route::middleware([
 
     Route::get("/search-post", function () {
         $user = auth()->user();
+        $query = request()->query('q');
+
         return Inertia::render("SearchPost", [
-            'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+            // 'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+            'posts' => Post::with('user')->with("tags")->where("title", "LIKE", "%$query%")->orWhere("content", "LIKE", "%$query%")->get(),
+            'user' => $user,
         ]);
     })->name("search-post");
 
     Route::get("/search-people", function () {
         $user = auth()->user();
+        $query = request()->query('q');
+
         return Inertia::render("SearchPeople", [
-            'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+            // 'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+            'user' => $user,
+            'people' => User::where("name", "LIKE", "%$query%")->orWhere("email", "LIKE", "%$query%")->get(),
         ]);
     })->name("search-people");
 
@@ -166,5 +174,4 @@ Route::middleware([
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('delete-post');
 
     Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('store-comment');
-
 });
