@@ -133,7 +133,22 @@ Route::middleware([
 
     Route::put('/posts/{post}', [PostController::class, 'update'])->name('update-post');
 
+    Route::get("/search-post", function () {
+        $user = auth()->user();
+        return Inertia::render("SearchPost", [
+            'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+        ]);
+    })->name("search-post");
+
+    Route::get("/search-people", function () {
+        $user = auth()->user();
+        return Inertia::render("SearchPeople", [
+            'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+        ]);
+    })->name("search-people");
+
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('delete-post');
 
     Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('store-comment');
+
 });
