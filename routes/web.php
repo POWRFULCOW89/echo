@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
 /*
@@ -25,26 +28,40 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
         'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+        'user' => auth()->user(),
     ]);
 });
 
 Route::get("/mission", function () {
-    return Inertia::render("Mission");
+    return Inertia::render("Mission", [
+        "user" => auth()->user(),
+    ]);
 });
 
 Route::get("/membership", function () {
-    return Inertia::render("Membership");
+    return Inertia::render("Membership", [
+        "user" => auth()->user(),
+    ]);
 });
 
-Route::get('/feed', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('/posts/{post}', function (Post $post) {
     return Inertia::render('Post', [
         'post' => $post,
         'user' => $post->user,
         'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+        "currentUser" => auth()->user(),
+        'comments' => $post->comments()->with('user')->get(),
     ]);
-});
+})->name('posts.show');
+
+Route::get('/profile/{user}', function (User $user) {
+    return Inertia::render('PublicProfile', [
+        'user' => $user,
+        'posts' => Post::with('user')->with("tags")->where("user_id", $user->id)->take(10)->get(),
+        "currentUser" => auth()->user(),
+    ]);
+})->name('profile');
 
 Route::middleware([
     'auth:sanctum',
@@ -52,13 +69,20 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Dashboard', [
+            'user' => auth()->user(),
+        ]);
     })->name('dashboard');
+
+    Route::get('/feed', [PostController::class, 'index'])->name('posts.index');
 
     Route::get("/my-posts", function () {
         $user = auth()->user();
+
         return Inertia::render("MyPosts", [
             "posts" => Post::where("user_id", $user->id)->get(),
+            "user" => $user,
+            // "canCreatePosts" => true
         ]);
     })->name("my-posts");
 
@@ -71,12 +95,26 @@ Route::middleware([
 
         return Inertia::render("Editor", [
             "post" => $post,
+            'user' => auth()->user(),
         ]);
     })->name('editor.edit');
 
     Route::get("/editor", function () {
+        $user = auth()->user();
+
+        // check how many posts has a user made in the last month
+        $posts = Post::where("user_id", $user->id)->where("created_at", ">", now()->subMonth())->get();
+
+        $canCreatePosts = $user->member || $posts->count() < 3;
+
+        if (!$canCreatePosts) {
+            // Session::flash("error", "You have reached the limit of posts you can create in a month. Please consider becoming a member to create more posts.");
+            return Redirect::intended('/my-posts')->with("canCreatePosts", false);
+        }
+
         return Inertia::render("Editor", [
             "post" => null,
+            'user' => auth()->user(),
         ]);
     })->name('editor');
 
@@ -108,4 +146,9 @@ Route::middleware([
             'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
         ]);
     })->name("search-people");
+
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('delete-post');
+
+    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('store-comment');
+
 });

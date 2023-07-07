@@ -47,16 +47,16 @@ El presente proyecto se encuentra bajo la licencia MIT. Para más información, 
 ✅❌
 | Vista | Backend | Frontend | Notas |
 | ----- | ------------------ | ------------------ | ----- |
-| Home | ✅ | ❌ | |
+| Home | ✅ | ✅ | |
 | Login | ✅ | ✅ | |
 | Registro | ✅ | ✅ | |
 | Olvidé mi contraseña | ✅ | ✅ | |
-| Feed | ✅ | ❌ | Combinar con dashboard |
+| Feed | ✅ | ✅ | Combinar con dashboard |
 | Artículo | ✅ | ❌ | |
-| Crear post | ✅ | ❌ | Pendiente restricción de 3 artículos|
-| Editar post | ✅ | ❌ | Pendiente: añadir tags e imagen de fondo |
-| Administrar posts | ✅ | ❌ | Pendiente: eliminación |
-| Perfil público | ❌ | ❌ | Pendiente: sistema de seguidores |
+| Crear post | ❌ | ✅ | Pendiente restricción de 3 artículos|
+| Editar post | ✅ | ✅ | Pendiente: añadir tags e imagen de fondo |
+| Administrar posts | ✅ | ✅ |  |
+| Perfil público | ✅ | ✅ | Pendiente: sistema de seguidores |
 | Perfil privado | ✅ | ❌ | Pendiente: adquirir y administrar la suscripción |
 | Buscar | ❌ | ❌ | Buscar una integración con Algolia |
 | Misión | ✅ | ✅ | |
@@ -69,9 +69,9 @@ El presente proyecto se encuentra bajo la licencia MIT. Para más información, 
 
 ### Calendario
 
--   Lunes 3: Vistas de login, registro, contraseña olvidada
--   Martes 4: Perfiles público y privado
--   Miércoles 5: Búsqueda
+-   [x] Lunes 3: Vistas de login, registro, contraseña olvidada
+-   [x] Martes 4: Perfiles público y privado
+-   [x] Miércoles 5: Búsqueda
 -   Jueves 6: Refinar UI de Home, artículo y crear/editar posts
 -   Viernes 7: Sistema de seguidores y membresía
 -   Sábado 8: Comodín, llenar datos reales, presentación

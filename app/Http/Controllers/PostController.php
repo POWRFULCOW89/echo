@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Prompt;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class PostController extends Controller
@@ -18,7 +19,7 @@ class PostController extends Controller
         // return Post::all();
         $posts = Post::with("user")->get();
         $prompt = Prompt::latest()->first()->content;
-        return Inertia::render('Feed', ['posts' => $posts, 'prompt' => $prompt]);
+        return Inertia::render('Feed', ['posts' => $posts, 'prompt' => $prompt, 'user' => auth()->user()]);
     }
 
     /**
@@ -85,6 +86,22 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if ($post->user_id != auth()->user()->id) {
+            return Redirect::intended('/my-posts');
+        }
+
+        $post->comments()->delete();
+
+        Post::destroy($post->id);
+        return redirect()->route('my-posts')->with('message', 'Post deleted successfully');;
     }
+
+    // public function like(Post $post)
+    // {
+    //     $post->update([
+    //         'likes' => $post->likes + 1
+    //     ]);
+
+    //     return redirect()->back();
+    // }
 }

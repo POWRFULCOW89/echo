@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-grayf py-6 relative">
+    <footer class="bg-grayf p-6 relative">
         <div class="container mx-auto flex">
             <div class="flex flex-grow">
                 <a href="/feed" class="text-white font-kalam text-2xl">((( Echo )))</a>
