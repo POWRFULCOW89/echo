@@ -127,7 +127,12 @@ const submitComment = () => {
         </section>
 
         <div class="flex-1 p-16 mx-28">
-            <p>{{ post.content }}</p>
+
+
+            <div v-html="post.content" class="mx-auto prose dark:prose-headings:text-gray-100 dark:prose-p:text-gray-100">
+            </div>
+
+
             <div class="flex gap-5 my-20">
                 <div class="flex gap-3"><font-awesome-icon :icon="['fas', 'heart']" />
                     <p>{{ post.likes }}</p>
