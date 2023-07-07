@@ -61,6 +61,10 @@ const logout = () => {
                                 Profile
                             </DropdownLink>
 
+                            <DropdownLink :href="route('my-posts')">
+                                My Posts
+                            </DropdownLink>
+
                             <DropdownLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')">
                                 API Tokens
                             </DropdownLink>
