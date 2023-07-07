@@ -6,15 +6,20 @@ import SectionBorder from '@/Components/SectionBorder.vue';
 import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
 import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue';
+import MainLayout from "@/Layouts/MainLayout.vue";
+import {Head} from "@inertiajs/vue3";
 
 defineProps({
     confirmsTwoFactorAuthentication: Boolean,
     sessions: Array,
+    user: Object
 });
 </script>
 
 <template>
-    <AppLayout title="Profile">
+    <Head title="Profile" />
+
+    <MainLayout :user="$page.props.auth.user">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 Profile
@@ -53,5 +58,5 @@ defineProps({
                 </template>
             </div>
         </div>
-    </AppLayout>
+    </MainLayout>
 </template>

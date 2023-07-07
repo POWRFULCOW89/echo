@@ -155,6 +155,22 @@ Route::middleware([
         ]);
     })->name("search-people");
 
+    Route::get("/search-tags", function () {
+        $user = auth()->user();
+        return Inertia::render("SearchTags", [
+            'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+            'user' => $user,
+        ]);
+    })->name("search-tags");
+
+    Route::get("/search-lists", function () {
+        $user = auth()->user();
+        return Inertia::render("SearchLists", [
+            'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+            'user' => $user,
+        ]);
+    })->name("search-lists");
+
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('delete-post');
 
     Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('store-comment');

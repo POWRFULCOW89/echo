@@ -61,11 +61,20 @@ const logout = () => {
                                 </span>
                             </template>
 
+                            <DropdownLink :href="route('my-posts')">
+                                My Posts
+                            </DropdownLink>
+
+                            <DropdownLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')">
+                                API Tokens
+                            </DropdownLink>
+
                             <template #content>
                                 <!-- Account Management -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     Manage Account
                                 </div>
+
 
                                 <DropdownLink :href="route('profile.show')">
                                     Profile

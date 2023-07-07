@@ -35,8 +35,8 @@ const query = params.get('q');
                             <ul class="space-y-4 text-xl">
                                 <li><a href="/search-post">Post</a></li>
                                 <li><a href="/search-people">People</a></li>
-                                <li><a href="">Tags</a></li>
-                                <li><a href="">Lists</a></li>
+                                <li><a href="/search-tags">Tags</a></li>
+                                <li><a href="/search-lists">Lists</a></li>
                             </ul>
                         </div>
                     </div>
