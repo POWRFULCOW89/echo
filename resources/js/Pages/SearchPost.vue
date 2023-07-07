@@ -33,16 +33,20 @@ const query = params.get('q');
                         </div>
                         <div class="w-11/12">
                             <ul class="space-y-4 text-xl">
-                                <li><a href="/search-post">Post</a></li>
-                                <li><a href="/search-people">People</a></li>
-                                <li><a href="/search-tags">Tags</a></li>
-                                <li><a href="/search-lists">Lists</a></li>
+                                <li><a :href="`/search-post${query != null ? '?q=' + query : ''}`">Post</a></li>
+                                <li><a :href="`/search-people${query != null ? '?q=' + query : ''}`">People</a></li>
+                                <li><a :href="`/search-tags${query != null ? '?q=' + query : ''}`">Tags</a></li>
+                                <li><a :href="`/search-lists${query != null ? '?q=' + query : ''}`">Lists</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="w-px bg-gray-200"></div>
-                <ul class="w-5/6 p-4">
+
+                <p v-if="posts.length === 0" class="text-center w-full dark:text-white text-2xl">
+                    No posts found
+                </p>
+                <ul v-else class="w-5/6 p-4">
                     <Post v-for="post in posts" :key="post.id" :post="post" />
                 </ul>
             </div>
