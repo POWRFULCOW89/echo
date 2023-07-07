@@ -16,7 +16,7 @@ defineProps({
     <Head title="Editor" />
     <NavAutenticado/>
 
-    <main class="p-12">
+    <main class="p-12 font-poppins">
         <div class="flex justify-between items-center">
             <p class="text-2xl">My posts</p>
             <Link class="bg-blue px-4 py-2 rounded text-white hover:bg-sky-600" href="/editor">

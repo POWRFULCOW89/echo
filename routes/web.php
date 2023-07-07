@@ -94,4 +94,18 @@ Route::middleware([
     Route::post('/posts', [PostController::class, 'store'])->name('save-post');
 
     Route::put('/posts/{post}', [PostController::class, 'update'])->name('update-post');
+
+    Route::get("/search-post", function () {
+        $user = auth()->user();
+        return Inertia::render("SearchPost", [
+            'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+        ]);
+    })->name("search-post");
+
+    Route::get("/search-people", function () {
+        $user = auth()->user();
+        return Inertia::render("SearchPeople", [
+            'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+        ]);
+    })->name("search-people");
 });

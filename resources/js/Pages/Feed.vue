@@ -60,7 +60,7 @@ defineProps({
 
             <ul class="w-3/4">
                 <li v-for="post in posts" :key="post.id">
-                    <a :href="`/posts/${post.id}`" class="flex border p-3 rounded m-3 place-items-center">
+                    <a :href="`/posts/${post.id}`" class="flex border p-3 rounded-lg m-3 place-items-center">
                         <div class="flex-1 flex flex-col">
                             <div class="flex gap-3">
                                 <!-- <img :src="post.image" alt="post image" class="w-32 h-32 rounded-lg" /> -->
