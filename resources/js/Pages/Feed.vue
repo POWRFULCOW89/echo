@@ -25,8 +25,8 @@ defineProps({
                                 <a class="flex-1" href="/user/profile">Nombre</a>
                             </div>
                             <div class="pl-8 flex flex-col gap-5">
-                                <a href="/">Saved</a>
-                                <a href="/">My lists</a>
+                                <a href="/feed">Saved</a>
+                                <a href="/feed">My lists</a>
                                 <a href="/my-posts">Blog posts</a>
                             </div>
                         </div>

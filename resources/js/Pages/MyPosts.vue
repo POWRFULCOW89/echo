@@ -60,7 +60,7 @@ const deletePost = (id) => {
                                         <p>{{ post.likes }}</p>
                                     </div>
                                     <div class="flex gap-3 items-center"><font-awesome-icon :icon="['fas', 'star']" />
-                                        <p>19</p>
+                                        <p>{{ post.views }}</p>
                                     </div>
                                     <div class="flex gap-3 items-center"><font-awesome-icon :icon="['fas', 'comment']" />
                                         <p>{{ post.comments }}</p>
