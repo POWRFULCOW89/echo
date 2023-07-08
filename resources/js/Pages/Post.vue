@@ -85,17 +85,19 @@ const submitComment = () => {
                         <div class="flex flex-col justify-evenly p-4 text-2xl items-center">
                             <div class="flex items-center flex-wrap bg-left-top">
                                 <div class="flex flex-1 justify-between items-center text-xl">
-                                    <div class="flex gap-3 items-center">
-                                        <img :src="user.profile_photo_url"
-                                            class="shadow rounded-full max-w-full h-auto align-middle border-none" />
-                                        <div>
-                                            <p class="text-white text-2xl py-8">{{ user.name }}<br /> <a
-                                                    class="text-white text-lg">{{ truncatedDate }}</a></p>
 
+                                    <a :href="`/profile/${user.id}`">
+                                        <div class="flex gap-3 items-center">
+                                            <img :src="user.profile_photo_url"
+                                                 class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+                                            <div>
+                                                <p class="text-white text-lg py-8">{{ user.name }}<br /> <a
+                                                    class="text-white text-sm">{{ truncatedDate }}</a></p>
+                                            </div>
+                                            <a
+                                                class="btn bg-blue text-white px-3 py-1 rounded-full hover:bg-gray-400 text-sm mb-8">Follow</a>
                                         </div>
-                                        <a href=""
-                                            class="btn bg-blue text-white px-3 py-1 rounded-full hover:bg-gray-400 text-sm mb-8">Follow</a>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="flex flex-col justify-between items-center text-xl">
                                     <div class="flex gap-5 items-center">
@@ -155,17 +157,18 @@ const submitComment = () => {
                 </div>
             </div>
             <div class="rounded-full shadow-2xl p-4">
-                <div class="flex justify-between items-center mx-20 my-8">
-                    <div class="flex gap-3 items-center">
-                        <img :src="user.profile_photo_url"
-                            class="shadow rounded-full max-w-full h-auto align-middle border-none" />
-                        <p class="text-2xl py-8">{{ user.name }}</p>
+                <a :href="`/profile/${user.id}`">
+                    <div class="flex justify-between items-center mx-20 my-8">
+                        <div class="flex gap-3 items-center">
+                            <img :src="user.profile_photo_url"
+                                 class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+                            <a  class="text-2xl py-8">{{ user.name }}</a>
+                        </div>
+                        <div class="ml-auto">
+                            <a class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 text-xl">Follow</a>
+                        </div>
                     </div>
-                    <div class="ml-auto">
-                        <a href=""
-                            class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 text-xl">Follow</a>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
 
@@ -185,11 +188,14 @@ const submitComment = () => {
 
             <ul class="w-1/2 mx-auto">
                 <li v-for="comment in localComments" :key="comment.id" class="mt-5">
-                    <div class="flex gap-5 items-center">
-                        <img :src="comment.user.profile_photo_url"
-                            class="shadow rounded-full max-w-full h-auto align-middle border-none" />
-                        <p class="text-2xl py-8">{{ comment.user.name }}</p>
-                    </div>
+                    <a :href="`/profile/${comment.user.id}`">
+                        <div class="flex gap-5 items-center">
+                            <img :src="comment.user.profile_photo_url"
+                                 class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+                            <p class="text-2xl py-8">{{ comment.user.name }}</p>
+                        </div>
+                    </a>
+
                     <p>{{ comment.content }}</p>
                     <div @click="likeComment(comment.id)"
                         class="flex justify-start items-center gap-5 mt-3 hover:text-blue hover:cursor-pointer">
