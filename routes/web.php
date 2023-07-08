@@ -48,8 +48,15 @@ Route::get("/membership", function () {
 
 
 Route::get('/posts/{post}', function (Post $post) {
+
+    $post->views += 1;
+    $post->save();
+
+    $post->tags = $post->tags()->get();
+
     return Inertia::render('Post', [
         'post' => $post,
+        // 'tags' => Tag::all(),
         'user' => $post->user,
         'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
         "currentUser" => auth()->user(),
@@ -98,7 +105,7 @@ Route::middleware([
     })->name("my-posts");
 
     Route::get("/editor/{id}", function ($id) {
-        $post = Post::find($id);
+        $post = Post::with('tags')->find($id);
 
         if ($post->user_id != auth()->user()->id) {
             return Redirect::intended('/my-posts');
