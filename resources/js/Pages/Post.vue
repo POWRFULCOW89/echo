@@ -129,18 +129,19 @@ const submitComment = () => {
         <div class="flex-1 p-16 mx-28">
 
 
-            <div v-html="post.content" class="mx-auto prose dark:prose-headings:text-gray-100 dark:prose-p:text-gray-100">
+            <div v-html="post.content"
+                class="mx-auto prose dark:text-gray-100 dark:prose-headings:text-gray-100 dark:prose-p:text-gray-100">
             </div>
 
 
-            <div class="flex gap-5 my-20">
-                <div class="flex gap-3"><font-awesome-icon :icon="['fas', 'heart']" />
+            <div class="flex gap-12 my-16 justify-center items-center">
+                <div class="flex items-center text-2xl gap-3"><font-awesome-icon :icon="['fas', 'heart']" />
                     <p>{{ post.likes }}</p>
                 </div>
-                <div class="flex gap-3"><font-awesome-icon :icon="['fas', 'star']" />
+                <div class="flex items-center text-2xl gap-3"><font-awesome-icon :icon="['fas', 'star']" />
                     <p>{{ post.views }}</p>
                 </div>
-                <div class="flex gap-3"><font-awesome-icon :icon="['fas', 'comment']" />
+                <div class="flex items-center text-2xl gap-3"><font-awesome-icon :icon="['fas', 'comment']" />
                     <p>{{ post.comments }}0</p>
                 </div>
             </div>
@@ -193,17 +194,18 @@ const submitComment = () => {
         <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-5 lg:px-10 lg:text-left">
             <p class="py-4 text-2xl sm:text-2xl font-poppins ">More by amazing people</p><br />
 
-            <div class="grid justify-center space-y-4 ">
+            <div class="grid justify-center space-y-8 ">
 
-                <a :href="`/posts/${post.id}`" v-for="post in posts" :key="post.id">
+                <a :href="`/posts/${post.id}`" v-for="post in posts" :key="post.id"
+                    class="border rounded dark:border-gray-100 hover:dark:bg-gray-500">
                     <div class="flex flex-wrap bg-left-top">
                         <!-- <p>{{ post?.tags?.[0].name }}</p> -->
-                        <div class="max-w-xs px-4 rounded-lg">
-
-                            <img :src="post.image_url" class="shadow rounded max-w-full h-auto align-middle border-none" />
+                        <div class="w-1/3 rounded-lg">
+                            <img :src="post.image_url"
+                                class="shadow rounded w-full max-w-full h-64 align-middle border-none" />
                         </div>
 
-                        <div class="flex flex-col justify-evenly p-4 text-2xl  font-poppins">
+                        <div class="w-2/3 flex flex-col justify-evenly p-4 text-2xl  font-poppins">
                             <p class="mt-4">{{ post.title }}</p>
                             <div class="flex items-center flex-wrap bg-left-top">
                                 <div class="flex flex-1 justify-between items-center text-xl">
