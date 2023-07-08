@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Prompt;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -37,14 +38,33 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+
+        // dd($request);
+        $image_url = '/images/articlePost.png';
+
+        if ($request->hasFile('image_url')) {
+            $image_url = "/storage/" . $request->file('image_url')->store('image', 'public');
+        }
+
         Post::create([
             'user_id' => $request->user()->id,
             'title' => $request->title,
             'content' => $request->content,
             'likes' => 0,
             'views' => 0,
-            'image_url' => 'https://picsum.photos/200/300'
+            'image_url' => $image_url,
         ]);
+
+        $tags = explode(',', $request->tags);
+
+        if ($tags[0] == "") {
+            $tags = [];
+        } else {
+            foreach ($tags as $tagName) {
+                $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+                $tag->save();
+            }
+        }
 
         return redirect()->route('my-posts');
     }
@@ -73,10 +93,58 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+
+        // $title = $request->attributes->get('title') || $post->title;
+        // $content = $request->attributes->get('content') || $post->content;
+        // $image_url = $request->attributes->get('image_url') || $post->image_url || '/images/articlePost.png';
+
+        $image_url = $post->image_url;
+
+        // if ($request->hasFile('image_url')) {
+
+        //     if (strpos($request->image_url, "storage")) {
+        //         // echo "Substring found!";
+        //     } else {
+        //         // echo "Substring not found!";
+        //         $image_url = "/storage/" . $request->file('image_url')->store('image', 'public');
+        //     }
+        // }
+
+        // dd($request->input("title"));
+
+        // $title = $request->input('title');
+        // $content = $request->input('content');
+        // $imageUrl = $request->input('image_url');
+
+        // dd($title, $content, $imageUrl);
+
+        // dd($request, $post, $title, $content, $imageUrl);
+
+        // $tagString = $request->tags;
+
+        // Split the string into individual tags
+
+
         $post->update([
             'title' => $request->title,
             'content' => $request->content,
+            'image_url' => $image_url,
         ]);
+
+        $tags = explode(',', $request->tags);
+
+        if ($tags[0] == "") {
+            $tags = [];
+        } else {
+            foreach ($tags as $tagName) {
+                $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+
+                // Attach the tag to the post
+                $post->tags()->syncWithoutDetaching($tag);
+            }
+        }
+
+
 
         return redirect()->route('my-posts');
     }

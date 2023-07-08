@@ -3,7 +3,9 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
+use App\Models\UserList;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -46,8 +48,15 @@ Route::get("/membership", function () {
 
 
 Route::get('/posts/{post}', function (Post $post) {
+
+    $post->views += 1;
+    $post->save();
+
+    $post->tags = $post->tags()->get();
+
     return Inertia::render('Post', [
         'post' => $post,
+        // 'tags' => Tag::all(),
         'user' => $post->user,
         'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
         "currentUser" => auth()->user(),
@@ -79,15 +88,24 @@ Route::middleware([
     Route::get("/my-posts", function () {
         $user = auth()->user();
 
+        // check how many posts has a user made in the last month
+        $posts = Post::where("user_id", $user->id)->where("created_at", ">", now()->subMonth())->get();
+
+        $canCreatePosts = $user->member || $posts->count() < 3;
+
+        // if (!$canCreatePosts) {
+        //     return Redirect::intended('/my-posts')->with("canCreatePosts", false);
+        // }
+
         return Inertia::render("MyPosts", [
-            "posts" => Post::where("user_id", $user->id)->get(),
+            "posts" => Post::where("user_id", $user->id)->latest()->get(),
             "user" => $user,
-            // "canCreatePosts" => true
+            "canCreatePosts" => $canCreatePosts
         ]);
     })->name("my-posts");
 
     Route::get("/editor/{id}", function ($id) {
-        $post = Post::find($id);
+        $post = Post::with('tags')->find($id);
 
         if ($post->user_id != auth()->user()->id) {
             return Redirect::intended('/my-posts');
@@ -108,7 +126,6 @@ Route::middleware([
         $canCreatePosts = $user->member || $posts->count() < 3;
 
         if (!$canCreatePosts) {
-            // Session::flash("error", "You have reached the limit of posts you can create in a month. Please consider becoming a member to create more posts.");
             return Redirect::intended('/my-posts')->with("canCreatePosts", false);
         }
 
@@ -151,7 +168,7 @@ Route::middleware([
         return Inertia::render("SearchPeople", [
             // 'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
             'user' => $user,
-            'people' => User::where("name", "LIKE", "%$query%")->orWhere("email", "LIKE", "%$query%")->get(),
+            'users' => User::where("name", "LIKE", "%$query%")->orWhere("email", "LIKE", "%$query%")->get(),
         ]);
     })->name("search-people");
 
@@ -159,14 +176,18 @@ Route::middleware([
         $user = auth()->user();
         return Inertia::render("SearchTags", [
             'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+            'tags' => Tag::where("name", "LIKE", "%" . request()->query('q') . "%")->get(),
             'user' => $user,
         ]);
     })->name("search-tags");
 
     Route::get("/search-lists", function () {
         $user = auth()->user();
+        $query = request()->query('q');
         return Inertia::render("SearchLists", [
-            'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+            // 'posts' => Post::with('user')->with("tags")->latest()->take(10)->get(),
+            // User::where("name", "LIKE", "%$query%")->orWhere("email", "LIKE", "%$query%")->get(),
+            'lists' => UserList::where("name", "LIKE", "%" . $query . "%")->orWhere("description", "LIKE", "%$query%")->get(),
             'user' => $user,
         ]);
     })->name("search-lists");

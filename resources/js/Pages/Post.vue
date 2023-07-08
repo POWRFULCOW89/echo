@@ -75,6 +75,7 @@ const submitComment = () => {
     <Head title="Post" />
 
     <MainLayout :user="currentUser">
+        <!-- <pre>{{ post }}</pre> -->
         <section class="relative">
             <div class="absolute inset-0">
                 <div class="bg-black opacity-50 absolute inset-0"></div>
@@ -84,6 +85,7 @@ const submitComment = () => {
                         <div class="flex flex-col justify-evenly p-4 text-2xl items-center">
                             <div class="flex items-center flex-wrap bg-left-top">
                                 <div class="flex flex-1 justify-between items-center text-xl">
+
                                     <a :href="`/profile/${user.id}`">
                                         <div class="flex gap-3 items-center">
                                             <img :src="user.profile_photo_url"
@@ -91,7 +93,6 @@ const submitComment = () => {
                                             <div>
                                                 <p class="text-white text-lg py-8">{{ user.name }}<br /> <a
                                                     class="text-white text-sm">{{ truncatedDate }}</a></p>
-
                                             </div>
                                             <a
                                                 class="btn bg-blue text-white px-3 py-1 rounded-full hover:bg-gray-400 text-sm mb-8">Follow</a>
@@ -119,30 +120,39 @@ const submitComment = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div class="flex w-1/2 justify-evenly items-center gap-8">
+                                <p v-if="post?.tags">{{ post?.tags?.[0]?.name }}</p>
+
+                                <div class="flex gap-3 items-center">
+                                    <font-awesome-icon :icon="['fas', 'eye']" />
+                                    <p>{{ post.views }} views</p>
+                                </div>
+                            </div>
                         </div>
 
                     </section>
 
                 </div>
             </div>
-            <img src="/images/articlePost.png" alt="Membership Image" class="w-full h-full object-cover">
+            <img :src="post.image_url ?? '/images/articlePost.png'" alt="Membership Image" class="w-full h-96 object-cover">
         </section>
 
         <div class="flex-1 p-16 mx-28">
 
 
-            <div v-html="post.content" class="mx-auto prose dark:prose-headings:text-gray-100 dark:prose-p:text-gray-100">
+            <div v-html="post.content"
+                class="mx-auto prose dark:text-gray-100 dark:prose-headings:text-gray-100 dark:prose-p:text-gray-100">
             </div>
 
 
-            <div class="flex gap-5 my-20">
-                <div class="flex gap-3"><font-awesome-icon :icon="['fas', 'heart']" />
+            <div class="flex gap-12 my-16 justify-center items-center">
+                <div class="flex items-center text-2xl gap-3"><font-awesome-icon :icon="['fas', 'heart']" />
                     <p>{{ post.likes }}</p>
                 </div>
-                <div class="flex gap-3"><font-awesome-icon :icon="['fas', 'star']" />
+                <div class="flex items-center text-2xl gap-3"><font-awesome-icon :icon="['fas', 'star']" />
                     <p>{{ post.views }}</p>
                 </div>
-                <div class="flex gap-3"><font-awesome-icon :icon="['fas', 'comment']" />
+                <div class="flex items-center text-2xl gap-3"><font-awesome-icon :icon="['fas', 'comment']" />
                     <p>{{ post.comments }}0</p>
                 </div>
             </div>
@@ -199,17 +209,18 @@ const submitComment = () => {
         <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-5 lg:px-10 lg:text-left">
             <p class="py-4 text-2xl sm:text-2xl font-poppins ">More by amazing people</p><br />
 
-            <div class="grid justify-center space-y-4 ">
+            <div class="grid justify-center space-y-8 ">
 
-                <a :href="`/posts/${post.id}`" v-for="post in posts" :key="post.id">
+                <a :href="`/posts/${post.id}`" v-for="post in posts" :key="post.id"
+                    class="border rounded dark:border-gray-100 hover:dark:bg-gray-500">
                     <div class="flex flex-wrap bg-left-top">
                         <!-- <p>{{ post?.tags?.[0].name }}</p> -->
-                        <div class="max-w-xs px-4 rounded-lg">
-
-                            <img :src="post.image_url" class="shadow rounded max-w-full h-auto align-middle border-none" />
+                        <div class="w-1/3 rounded-lg">
+                            <img :src="post.image_url"
+                                class="shadow rounded w-full max-w-full h-64 align-middle border-none" />
                         </div>
 
-                        <div class="flex flex-col justify-evenly p-4 text-2xl  font-poppins">
+                        <div class="w-2/3 flex flex-col justify-evenly p-4 text-2xl  font-poppins">
                             <p class="mt-4">{{ post.title }}</p>
                             <div class="flex items-center flex-wrap bg-left-top">
                                 <div class="flex flex-1 justify-between items-center text-xl">

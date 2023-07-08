@@ -33,7 +33,7 @@ defineProps({
 
             <p class="w-1/2 mx-auto text-lg text-center dark:text-white">{{ user.bio }}</p>
 
-            <div v-if="true" class="flex gap-3 justify-center items-center my-8 font-bold text-blue text-xl">
+            <div v-if="user.member" class="flex gap-3 justify-center items-center my-8 font-bold text-blue text-xl">
                 <font-awesome-icon :icon="['fas', 'crown']" />
                 <p>Echo+ user</p>
             </div>
