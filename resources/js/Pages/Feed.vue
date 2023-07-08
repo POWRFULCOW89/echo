@@ -15,14 +15,14 @@ defineProps({
 
     <MainLayout :user="user">
         <div class="flex">
-            <aside class="flex-1 border">
+            <aside class="flex-1 ">
                 <div class="border-none rounded-lg bg-sky-100 p-4 m-4 mt-12">
                     <div class="flex flex-col gap-3">
                         <div class="py-2 text-black flex flex-col gap-5 ">
                             <div class="flex gap-3 place-items-center">
                                 <img :src="user.profile_photo_url" alt="User Image"
                                     class="shadow rounded-full w-8 h-8 border-none" />
-                                <a class="flex-1" href="/user/profile">Nombre</a>
+                                <a class="flex-1" href="/user/profile">{{ user.name }}</a>
                             </div>
                             <div class="pl-8 flex flex-col gap-5">
                                 <a href="/">Saved</a>
@@ -68,7 +68,7 @@ defineProps({
                     </li>
                 </ul>
             </section>
-            <aside class="flex-1 border">
+            <aside class="flex-1 ">
                 <img src="/images/bannerAdFurniture.png" alt="Ad Image" class="pt-40 p-4" />
                 <img src="/images/bannerAdDomino.jpg" alt="Ad Image" class="pt-96 p-4" />
             </aside>
