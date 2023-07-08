@@ -37,13 +37,21 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+
+        // dd($request);
+        $image_url = '/images/articlePost.png';
+
+        if ($request->hasFile('image_url')) {
+            $image_url = "/storage/" . $request->file('image_url')->store('image', 'public');
+        }
+
         Post::create([
             'user_id' => $request->user()->id,
             'title' => $request->title,
             'content' => $request->content,
             'likes' => 0,
             'views' => 0,
-            'image_url' => 'https://picsum.photos/200/300'
+            'image_url' => $image_url,
         ]);
 
         return redirect()->route('my-posts');
@@ -73,9 +81,37 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+
+        // $title = $request->attributes->get('title') || $post->title;
+        // $content = $request->attributes->get('content') || $post->content;
+        // $image_url = $request->attributes->get('image_url') || $post->image_url || '/images/articlePost.png';
+
+        $image_url = $post->image_url;
+
+        // if ($request->hasFile('image_url')) {
+
+        //     if (strpos($request->image_url, "storage")) {
+        //         // echo "Substring found!";
+        //     } else {
+        //         // echo "Substring not found!";
+        //         $image_url = "/storage/" . $request->file('image_url')->store('image', 'public');
+        //     }
+        // }
+
+        // dd($request->input("title"));
+
+        // $title = $request->input('title');
+        // $content = $request->input('content');
+        // $imageUrl = $request->input('image_url');
+
+        // dd($title, $content, $imageUrl);
+
+        // dd($request, $post, $title, $content, $imageUrl);
+
         $post->update([
             'title' => $request->title,
             'content' => $request->content,
+            'image_url' => $image_url,
         ]);
 
         return redirect()->route('my-posts');

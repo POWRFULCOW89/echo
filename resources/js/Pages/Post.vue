@@ -123,7 +123,8 @@ const submitComment = () => {
 
                 </div>
             </div>
-            <img src="/images/articlePost.png" alt="Membership Image" class="w-full h-full object-cover">
+            <img :src="post.image_url ?? '/images/articlePost.png'" alt="Membership Image"
+                class="w-full h-full object-cover">
         </section>
 
         <div class="flex-1 p-16 mx-28">

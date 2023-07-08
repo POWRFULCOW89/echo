@@ -91,7 +91,7 @@ Route::middleware([
         // }
 
         return Inertia::render("MyPosts", [
-            "posts" => Post::where("user_id", $user->id)->get(),
+            "posts" => Post::where("user_id", $user->id)->latest()->get(),
             "user" => $user,
             "canCreatePosts" => $canCreatePosts
         ]);
