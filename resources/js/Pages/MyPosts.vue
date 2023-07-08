@@ -57,13 +57,13 @@ const deletePost = (id) => {
                             <div class="flex justify-between items-center gap-y-5">
                                 <div class="flex gap-5 items-center">
                                     <div class="flex gap-3 items-center"><font-awesome-icon :icon="['fas', 'heart']" />
-                                        <p>199</p>
+                                        <p>{{ post.likes }}</p>
                                     </div>
                                     <div class="flex gap-3 items-center"><font-awesome-icon :icon="['fas', 'star']" />
                                         <p>19</p>
                                     </div>
                                     <div class="flex gap-3 items-center"><font-awesome-icon :icon="['fas', 'comment']" />
-                                        <p>277</p>
+                                        <p>{{ post.comments }}</p>
                                     </div>
                                 </div>
 

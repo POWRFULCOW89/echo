@@ -23,7 +23,7 @@ defineProps({
                         <p class="text-white text-2xl py-8">Subscribe to Echo and unlock a world
                             of captivating <br />content that will broaden your horizons.
                         </p>
-                        <a href="" class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 text-xl">Join
+                        <a href="/register" class="btn bg-blue text-white px-4 py-2 rounded-full hover:bg-gray-400 text-xl">Join
                             Echo</a><br />
                     </section>
 
@@ -65,7 +65,7 @@ defineProps({
                                         class="shadow rounded-full w-20 h-20 align-middle border-none mt-7" />
                                     <div class="ml-5 mt-7 text-xl">
                                         <p class="lg:mr-10">“I love how Echo empowers me to explore new ideas and connect
-                                            with a vibrant community of like-minded individuals.”
+                                            with a vibrant community of like-minded individuals.”<br/>
                                             <a class="font-bold">- Albert Einstein</a>
                                         </p>
                                     </div>
@@ -96,7 +96,7 @@ defineProps({
                 <div class="ml-52 -mt-4">
                     <img src="/images/dash.png" alt="Dash Image" class="w-44 mb-20">
                 </div>
-                <a href="/feed"
+                <a href="/register"
                     class="btn bg-gray-900 text-white px-4 py-2 rounded-full font-poppins hover:bg-blue mx-auto">Get
                     started</a>
             </div>

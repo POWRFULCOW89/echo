@@ -22,14 +22,14 @@ defineProps({
     <MainLayout :user="user">
         <div class="relative ">
             <img src="/images/home.png" alt="Background Image" class="w-full h-full object-cover">
-            <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-20 lg:px-10 lg:text-left absolute left-0 top-0">
+            <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-20 lg:px-10 lg:text-left absolute left-0 top-0 text-white">
                 <h1 class="text-6xl sm:text-6xl">Let your voice<a class="font-bold"> be
                         heard</a>
                 </h1><br />
                 <p class="py-4 text-4xl sm:text-4xl">Share your story with the <br />world,
                     anytime.
                 </p><br />
-                <a href="/feed" class="btn bg-blue px-6 py-2 rounded-full hover:bg-gray-400  text-2xl">Begin
+                <a href="/register" class="btn bg-blue px-6 py-2 rounded-full hover:bg-gray-400  text-2xl">Begin
                     exploring</a><br />
             </div>
 
