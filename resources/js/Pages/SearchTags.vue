@@ -50,8 +50,7 @@ const query = params.get('q');
 
                 <ul v-else class="w-5/6 p-4 flex flex-wrap gap-6">
                     <li v-for="tag in tags" :key="tag.id">
-                        <a :href="`/posts/${tag.id}`"
-                            class="btn bg-gray-300 px-4 py-1.5 rounded-full hover:bg-blue text-lg mb-8">
+                        <a href="/" class="btn bg-gray-300 px-4 py-1.5 rounded-full hover:bg-blue text-lg mb-8">
                             {{ tag.name }}
                         </a>
                     </li>

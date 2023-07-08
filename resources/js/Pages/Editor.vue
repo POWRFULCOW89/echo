@@ -13,7 +13,8 @@ const props = defineProps({
 const form = useForm({
     title: props.post?.title ?? '',
     content: props.post?.content ?? '',
-    image_url: props.post?.image_url ?? null
+    image_url: props.post?.image_url ?? null,
+    tags: props.post?.tags.map(tag => tag.name).join(",") ?? null,
 })
 
 const imagePreview = ref(null);
@@ -56,7 +57,8 @@ const submit = () => {
             data: {
                 title: form.title,
                 content: form.content,
-                image_url: form.image_url
+                image_url: form.image_url,
+                tags: form.tags
             }
         })
     }
@@ -69,6 +71,7 @@ const submit = () => {
 
     <MainLayout :user="user">
         <main class="font-poppins">
+            <!-- <pre>{{ post.tags }}</pre> -->
             <form @submit.prevent="submit">
                 <main class="flex flex-col place-items-center p-8">
                     <label class="text-2xl font-bold my-4">Title</label>
@@ -85,7 +88,8 @@ const submit = () => {
                             <p>Tags</p>
                         </div>
                         <div class="col-span-1">
-                            <input type="text" class="border border-gray-300 rounded-lg dark:text-black" placeholder="Tags">
+                            <input type="text" v-model="form.tags" class="border border-gray-300 rounded-lg dark:text-black"
+                                placeholder="Tags">
                         </div>
                         <div class="col-span-1 grid justify-items-end">
                             <p>Background Image</p>

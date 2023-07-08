@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Prompt;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -53,6 +54,17 @@ class PostController extends Controller
             'views' => 0,
             'image_url' => $image_url,
         ]);
+
+        $tags = explode(',', $request->tags);
+
+        if ($tags[0] == "") {
+            $tags = [];
+        } else {
+            foreach ($tags as $tagName) {
+                $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+                $tag->save();
+            }
+        }
 
         return redirect()->route('my-posts');
     }
@@ -108,11 +120,31 @@ class PostController extends Controller
 
         // dd($request, $post, $title, $content, $imageUrl);
 
+        // $tagString = $request->tags;
+
+        // Split the string into individual tags
+
+
         $post->update([
             'title' => $request->title,
             'content' => $request->content,
             'image_url' => $image_url,
         ]);
+
+        $tags = explode(',', $request->tags);
+
+        if ($tags[0] == "") {
+            $tags = [];
+        } else {
+            foreach ($tags as $tagName) {
+                $tag = Tag::firstOrCreate(['name' => trim($tagName)]);
+
+                // Attach the tag to the post
+                $post->tags()->syncWithoutDetaching($tag);
+            }
+        }
+
+
 
         return redirect()->route('my-posts');
     }

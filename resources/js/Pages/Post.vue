@@ -75,6 +75,7 @@ const submitComment = () => {
     <Head title="Post" />
 
     <MainLayout :user="currentUser">
+        <!-- <pre>{{ post }}</pre> -->
         <section class="relative">
             <div class="absolute inset-0">
                 <div class="bg-black opacity-50 absolute inset-0"></div>
@@ -88,8 +89,8 @@ const submitComment = () => {
                                         <img :src="user.profile_photo_url"
                                             class="shadow rounded-full max-w-full h-auto align-middle border-none" />
                                         <div>
-                                            <p class="text-white text-lg py-8">{{ user.name }}<br /> <a
-                                                    class="text-white text-sm">{{ truncatedDate }}</a></p>
+                                            <p class="text-white text-2xl py-8">{{ user.name }}<br /> <a
+                                                    class="text-white text-lg">{{ truncatedDate }}</a></p>
 
                                         </div>
                                         <a href=""
@@ -117,14 +118,21 @@ const submitComment = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div class="flex w-1/2 justify-evenly items-center gap-8">
+                                <p v-if="post?.tags">{{ post?.tags?.[0]?.name }}</p>
+
+                                <div class="flex gap-3 items-center">
+                                    <font-awesome-icon :icon="['fas', 'eye']" />
+                                    <p>{{ post.views }} views</p>
+                                </div>
+                            </div>
                         </div>
 
                     </section>
 
                 </div>
             </div>
-            <img :src="post.image_url ?? '/images/articlePost.png'" alt="Membership Image"
-                class="w-full h-full object-cover">
+            <img :src="post.image_url ?? '/images/articlePost.png'" alt="Membership Image" class="w-full h-96 object-cover">
         </section>
 
         <div class="flex-1 p-16 mx-28">
