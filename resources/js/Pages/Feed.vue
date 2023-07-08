@@ -31,7 +31,7 @@ defineProps({
                             </div>
                         </div>
 
-                        <hr class="my-4 border-gray-900">
+                        <!-- <hr class="my-4 border-gray-900">
 
                         <div class="flex gap-3 text-black items-center">
                             <img src="/images/userMembership.jpg" alt="User Image"
@@ -39,7 +39,7 @@ defineProps({
                             <div class="">
                                 <a href="/">Followers</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <img src="/images/bannerAdSushi.png" alt="Ad Image" class="pt-96 p-4" />
