@@ -66,11 +66,4 @@ El presente proyecto se encuentra bajo la licencia MIT. Para más información, 
 -   Newsletter
 -   Integración con Google Analytics y Ads
 
-### Calendario
-
--   [x] Lunes 3: Vistas de login, registro, contraseña olvidada
--   [x] Martes 4: Perfiles público y privado
--   [x] Miércoles 5: Búsqueda
--   Jueves 6: Refinar UI de Home, artículo y crear/editar posts
--   Viernes 7: Sistema de seguidores y membresía
--   Sábado 8: Comodín, llenar datos reales, presentación
+#### [Presentación en Canva](https://www.canva.com/design/DAFn_skmiXg/yTAIbBBJlGVVv1VKeBsTUw/watch?utm_content=DAFn_skmiXg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
