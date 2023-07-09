@@ -53,9 +53,9 @@ El presente proyecto se encuentra bajo la licencia MIT. Para más información, 
 | Feed | ✅ | ✅ | |
 | Artículo | ✅ | ✅ | |
 | Crear post | ✅ | ✅ | |
-| Editar post | ✅ | ✅ | Pendiente: añadir tags e imagen de fondo |
+| Editar post | ✅ | ✅ |  |
 | Administrar posts | ✅ | ✅ | |
-| Perfil público | ✅ | ✅ | Pendiente: sistema de seguidores |
+| Perfil público | ✅ | ✅ |  |
 | Perfil privado | ✅ | ✅ |  |
 | Buscar | ✅ | ✅ |  |
 | Misión | ✅ | ✅ | |
